@@ -2,6 +2,34 @@
 
 use std::fmt::{Display, Formatter};
 
+#[doc(hidden)]
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test() {
+        let mut node = TreeNode::new("Test Node");
+// add a single child
+        node.add_child(TreeNode::new("Child 1"));
+// add a child with children which also have children
+        node.add_child(TreeNode::new_with_children("Child 2",
+                                                   vec![TreeNode::new("Child 2.1"),
+                                                        TreeNode::new("Child 2.2"),
+                                                        TreeNode::new_with_children("Child 2.3",
+                                                                                    vec![TreeNode::new("Child 2.3.1"),
+                                                                                         TreeNode::new("Child 2.3.2")]),
+                                                        TreeNode::new_with_children("Child 2.4",
+                                                                                    vec![TreeNode::new("Child 2.4.1"),
+                                                                                         TreeNode::new("Child 2.4.2"),
+                                                                                         TreeNode::new("Child 2.4.3")])]));
+// add another singular child
+        node.add_child(TreeNode::new("Child 3"));
+        println!("{}", node);
+    }
+}
+
+
 /// A node system that will display as a tree in the terminal
 /// using unicode characters.
 /// Originally designed to display the Abstract Syntax Tree of my Programming language.
