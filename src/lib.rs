@@ -40,18 +40,18 @@ mod tests {
 ///
 /// // This will print:
 /// // Test Node
-/// //  ├─Child 1
-/// //  ├─Child 2
-/// //  │ ├─Child 2.1
-/// //  │ ├─Child 2.2
-/// //  │ ├─Child 2.3
-/// //  │ │ ├─Child 2.3.1
-/// //  │ │ └─Child 2.3.2
-/// //  │ └─Child 2.4
-/// //  │   ├─Child 2.4.1
-/// //  │   ├─Child 2.4.2
-/// //  │   └─Child 2.4.3
-/// //  └─Child 3
+/// //  ├╴Child 1
+/// //  ├╴Child 2
+/// //  │ ├╴Child 2.1
+/// //  │ ├╴Child 2.2
+/// //  │ ├╴Child 2.3
+/// //  │ │ ├╴Child 2.3.1
+/// //  │ │ └╴Child 2.3.2
+/// //  │ └╴Child 2.4
+/// //  │   ├╴Child 2.4.1
+/// //  │   ├╴Child 2.4.2
+/// //  │   └╴Child 2.4.3
+/// //  └╴Child 3
 ///
 /// let mut node = TreeNode::new("Test Node");
 /// // add a single child
@@ -118,9 +118,9 @@ impl TreeNode {
         // print out the connection type and the name of the node
         if is_child {
             if is_last {
-                output.push_str("└─");
+                output.push_str("└╴");
             } else {
-                output.push_str("├─");
+                output.push_str("├╴");
             }
         }
         output.push_str(&self.name);
